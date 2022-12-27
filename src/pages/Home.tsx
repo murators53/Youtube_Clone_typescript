@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import Card from '../components/Card'
+import Minibar from '../components/Minibar'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import Spinner from '../components/Spinner'
+import TopBar from '../components/TopBar'
 import { clearVideos } from '../redux'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { getHomePageVideos } from '../redux/reducers/getHomePageVideos'
@@ -12,13 +14,14 @@ import { HomePageVideos } from '../Types'
 export default function Home() {
   const dispatch = useAppDispatch()
   const videos = useAppSelector((state) => state.youtubeApp.videos)
-  
+  const { slideMenu } = useAppSelector((state) => state.youtubeApp)
+
   useEffect(() => {
     return () => {
       dispatch(clearVideos())
     }
   }, [dispatch])
-  console.log(videos);
+
   useEffect(() => {
     dispatch(getHomePageVideos(false))
   }, [dispatch])
@@ -28,17 +31,23 @@ export default function Home() {
       <div style={{ height: "7.5vh" }}>
         <Navbar />
       </div>
-      <div className="flex" style={{ height: "92.5vh" }}>
-        <Sidebar />
+      <div className="flex h-[111vh] " style={{ height: "99.5vh" }}>
+        {slideMenu ?
+          <Sidebar /> :
+          <Minibar />
+        }
+
         {videos.length ? (
           <InfiniteScroll
             dataLength={videos.length}
             next={() => dispatch(getHomePageVideos(true))}
             hasMore={videos.length < 500}
             loader={<Spinner />}
-            height={650}
+            height={750}
+            className='bg-[#0f0f0f] overflow-y-auto  pt-1'
           >
-            <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
+            <TopBar />
+            <div className={`grid mr-7 gap-x-[17px] gap-y-18 gap-x-2 grid-cols-4 pb-8 py-6 pl-8 transform ease-in ${slideMenu ? 'ml-[15.3%] right-3' : ''} `}>
               {videos.map((item: HomePageVideos) => {
                 return <Card data={item} key={item.videoId} />;
               })}

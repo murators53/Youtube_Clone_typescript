@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 
 export default function WatchCard({ data }: { data: RecommendedVideos }) {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 ">
       <div className="relative min-w-fit">
-        <span className="absolute bottom-3 right-3 text-sm bg-gray-900 px-2 py-0.5 z-10">
+        <span className="absolute bottom-1 right-1 text-xs bg-[#0f0f0f] px-1 py-0.3 z-10 rounded-[4px]">
           {data.videoDuration}
         </span>
         <Link to={`/watch/${data.videoId}`}>
           <img
             src={data.videoThumbnail}
-            className="h-24 w-40"
+            className="h-24 w-40 rounded-xl"
             alt="thumbnail"
           />
         </Link>

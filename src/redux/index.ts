@@ -12,7 +12,9 @@ const initialState: InitialState = {
     searchTerm:"",
     searchResults: [],
     nextPageToken:null,
-    recommendedVideos:[]
+    recommendedVideos:[],
+    slideMenu:false,
+    searchHidden:false
 }
 
 const YoutubeSlice = createSlice({
@@ -28,7 +30,13 @@ const YoutubeSlice = createSlice({
         },
         clearSearchTerm : (state) => {
             state.searchTerm = "";
-        }
+        },
+        showSlideMenu : (state, action:PayloadAction<boolean>) => {
+            state.slideMenu = !action.payload
+        }, 
+        showSearchButton : (state, action:PayloadAction<boolean>) => {
+            state.searchHidden = !action.payload
+        }, 
     },
     extraReducers: (builder) => {
         builder.addCase(getHomePageVideos.fulfilled, (state, action) => {
@@ -54,7 +62,7 @@ export const store = configureStore({
     }
 })
 
-export const { clearVideos, changeSearchTerm, clearSearchTerm } = YoutubeSlice.actions;
+export const { clearVideos, changeSearchTerm, clearSearchTerm, showSlideMenu } = YoutubeSlice.actions;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

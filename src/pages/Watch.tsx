@@ -12,6 +12,7 @@ import { BsThreeDots } from "react-icons/bs";
 import WatchCard from "../components/WatchCard";
 export default function Watch() {
   const [showMoreStatus, setShowMoreStatus] = useState<boolean>(false);
+  const videos = useAppSelector((state) => state.youtubeApp.videos)
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -38,17 +39,17 @@ export default function Watch() {
   return (
     <>
       {currentPlaying && currentPlaying?.videoId === id && (
-        <div className="max-h-screen overflow-hidden">
+        <div className="max-h-screen overflow-hidden bg-[#0f0f0f]">
           <div style={{ height: "7.5vh" }}>
             <Navbar />
           </div>
           <div className="flex w-full" style={{ height: "92.5vh" }}>
-            <div className="flex gap-y-10 gap-x-5 p-7 mx-20 mr-0 w-full overflow-auto">
+            <div className="flex gap-y-10 gap-x-5 py-3 mx-20 mr-0 w-full overflow-auto">
               <div style={{ maxWidth: "800px" }}>
                 <div>
                   <iframe
-                    width="800"
-                    height="502"
+                    width="860"
+                    height="552"
                     src={`https://www.youtube.com/embed/${id}?autoplay=1`}
                     title="YouTube video player"
                     frameBorder="0"
@@ -139,9 +140,9 @@ export default function Watch() {
                   </div>
                 </div>
               </div>
-              <div className="mr-24 flex flex-col gap-3">
+              <div className="mr-10 flex flex-col gap-3">
                 {getRecommendedVideos.length &&
-                  recommendedVideos.map((item) => {
+                  videos.map((item) => {
                     return <WatchCard data={item} key={item.videoId} />;
                   })}
               </div>

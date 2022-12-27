@@ -4,13 +4,13 @@ import { HomePageVideos } from '../Types'
 
 export default function Card({ data }: { data: HomePageVideos }) {
     return (
-        <div className='w-64 h-60 flex gap-3 flex-col'>
+        <div className='w-full h-60 flex gap-4 flex-col flex-shrink-0 pb-14 mr-[29px] mb-16 '>
             <div className='relative'>
-                <span className='absolute bototm-3 right-3 text-sm bg-gray-900 px-2 py-0.5 z-10'>
+                <span className='absolute bottom-1 right-1 text-sm bg-gray-900 px-1 py-0.3 z-10'>
                     {data.videoDuration}
                 </span>
                 <Link to={`/watch/${data.videoId}`}>
-                    <img src={data.videoThumbnail} className='h-44 w-72' alt='thubmnail' />
+                    <img src={data.videoThumbnail} className='h-44 w-96 rounded-xl' alt='thubmnail' />
                 </Link>
             </div>
             <div className='flex gap-2'>
@@ -34,9 +34,9 @@ export default function Card({ data }: { data: HomePageVideos }) {
                         </div>
                         <div>
                             <span className="after:content-['*'] after:mx-1 ">
-                                {data.videoViews}
+                                {data.videoViews} views
                             </span>
-                            <span>{data.videoAge}</span>
+                            <span>{data.videoAge}</span> ago
                         </div>
                     </div>
                 </div>

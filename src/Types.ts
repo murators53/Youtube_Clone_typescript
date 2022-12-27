@@ -5,6 +5,8 @@ export interface InitialState {
     searchResults: [];
     nextPageToken: string | null;
     recommendedVideos: RecommendedVideos[];
+    slideMenu:boolean;
+    searchHidden:boolean
   }
   
   export interface Props {
