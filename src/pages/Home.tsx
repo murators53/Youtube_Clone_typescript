@@ -15,7 +15,8 @@ export default function Home() {
   const dispatch = useAppDispatch()
   const videos = useAppSelector((state) => state.youtubeApp.videos)
   const { slideMenu } = useAppSelector((state) => state.youtubeApp)
-
+  let videos2=[]
+  videos2.push(videos)
   useEffect(() => {
     return () => {
       dispatch(clearVideos())
@@ -28,7 +29,7 @@ export default function Home() {
 
   return (
     <div className="max-h-screen overflow-hidden">
-      <div style={{ height: "7.5vh" }}>
+      <div className='w-[100%]' style={{ height: "7.5vh" }}>
         <Navbar />
       </div>
       <div className="flex h-[111vh] " style={{ height: "99.5vh" }}>
@@ -47,7 +48,7 @@ export default function Home() {
             className='bg-[#0f0f0f] overflow-y-auto  pt-1'
           >
             <TopBar />
-            <div className={`grid mr-7 gap-x-[17px] gap-y-18 gap-x-2 grid-cols-4 pb-8 py-6 pl-8 transform ease-in ${slideMenu ? 'ml-[15.3%] right-3' : ''} `}>
+            <div className={`grid mr-7  gap-y-4  sm:grid-cols-2 gap-x-4 lg:grid-cols-4 grid-cols-4 pb-8 py-6 pl-8 flex-shrink-0 transform ease-in ${slideMenu ? 'ml-[15.3%] right-3' : ''} `}>
               {videos.map((item: HomePageVideos) => {
                 return <Card data={item} key={item.videoId} />;
               })}

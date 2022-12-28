@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar'
 import SearchCard from '../components/SearchCard'
 import Sidebar from '../components/Sidebar'
 import Spinner from '../components/Spinner'
-import { clearVideos } from '../redux'
+import { changeSearchTerm, clearVideos } from '../redux'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { getSearchPageVideos } from '../redux/reducers/getSearchPageVideos'
 import { HomePageVideos } from '../Types'
@@ -25,7 +25,9 @@ export default function Search() {
       navigate("/")
     } else {
       dispatch(getSearchPageVideos(false))
+      
     }
+    dispatch(clearVideos())
   }, [dispatch, navigate, searchTerm])
 
   return (

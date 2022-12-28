@@ -1,5 +1,6 @@
 export interface InitialState {
     videos: HomePageVideos[];
+    videos2: HomePageVideos[];
     currentPlaying: CurrentPlaying | null;
     searchTerm: string;
     searchResults: [];

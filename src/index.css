@@ -10,6 +10,42 @@ body{
     color: #fff;
     font-family: 'Roboto', sans-serif;
 }
+@layer components{
+
+    .showedCard{
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background-color: #0f0f0f;
+        width: 1.75rem;
+        height:  1.75rem;
+        padding: 0.25rem;
+        border-radius: 0.5rem;
+        display: flex;
+    }
+    .showedCard2{
+        position: absolute;
+        top: 40px;
+        right: 8px;
+        background-color: #0f0f0f;
+        width: 1.75rem;
+        height:  1.75rem;
+        padding: 0.25rem;
+        border-radius: 0.5rem;
+        display: flex;
+    }
+    .showedCard3{
+        position: absolute;
+        top: 0;
+        right: -22rem;
+        background-color: #0f0f0f;
+        width: 1.75rem;
+        height:  1.75rem;
+        padding: 0.25rem;
+        border-radius: 0.5rem;
+        display: flex;
+    }
+} 
 
 ::-webkit-scrollbar {
     background-color: transparent;

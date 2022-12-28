@@ -1,16 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { HomePageVideos } from '../Types'
+import { BsThreeDotsVertical } from 'react-icons/bs'
 
 export default function SearchCard({ data }: { data: HomePageVideos }) {
   return (
-    <div className="flex gap-3 bg-[#0f0f0f]">
+  <div className={`flex gap-3 bg-[#0f0f0f] group hover:brightness-125  `}>
       <div className="relative">
         <span className='absolute bottom-1 right-1 text-xs bg-[#0f0f0f] px-1 py-0.3 z-10 rounded-[4px] '>
           {data.videoDuration}
+
         </span>
-        <Link to={`/watch/${data.videoId}`}>
+        <Link to={`/watch/${data.videoId}`} className='relative'>
           <img src={data.videoThumbnail} className='h-[12.5rem] w-[22.5rem] rounded-xl' alt='thubmnail' />
+          <BsThreeDotsVertical className="absolute hidden group-hover:showedCard3 group-hover:right-[-60rem]" />
         </Link>
       </div>
       <div className="flex gap-1 flex-col">

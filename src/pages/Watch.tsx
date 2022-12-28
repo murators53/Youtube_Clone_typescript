@@ -10,6 +10,7 @@ import { MdOutlinePlaylistAdd } from "react-icons/md";
 import { FaShare } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 import WatchCard from "../components/WatchCard";
+
 export default function Watch() {
   const [showMoreStatus, setShowMoreStatus] = useState<boolean>(false);
   const videos = useAppSelector((state) => state.youtubeApp.videos)
@@ -45,11 +46,12 @@ export default function Watch() {
           </div>
           <div className="flex w-full" style={{ height: "92.5vh" }}>
             <div className="flex gap-y-10 gap-x-5 py-3 mx-20 mr-0 w-full overflow-auto">
-              <div style={{ maxWidth: "800px" }}>
-                <div>
+              <div style={{ maxWidth: "900px" }}>
+                <div >
                   <iframe
+                  className="bg-red-400"
                     width="860"
-                    height="552"
+                    height="482"
                     src={`https://www.youtube.com/embed/${id}?autoplay=1`}
                     title="YouTube video player"
                     frameBorder="0"
@@ -57,7 +59,7 @@ export default function Watch() {
                     allowFullScreen
                   ></iframe>
                   <div className="mt-5">
-                    <p className="text-xl">{currentPlaying.videoTitle}</p>
+                    <p className="text-lg">{currentPlaying.videoTitle}</p>
                     <div className="flex justify-between mt-1">
                       <div className="text-sm text-gray-400">
                         <span className="after:content-['•'] after:mx-1">
@@ -104,12 +106,12 @@ export default function Watch() {
                           <h5 className="text-sm">
                             <strong>{currentPlaying.channelInfo.name}</strong>
                           </h5>
-                          <h6 className="text-gray-400 text-xs">
+                          <h6 className="text-gray-400 text-xs ">
                             {currentPlaying.channelInfo.subscribers} subscribers
                           </h6>
                         </div>
                         <div>
-                          <button className="uppercase bg-red-600 rounded-sm p-2 text-sm tracking-wider">
+                          <button className="uppercase bg-red-600 rounded-sm p-2 text-sm tracking-wider hover:brightness-125">
                             subscribe
                           </button>
                         </div>
@@ -140,7 +142,7 @@ export default function Watch() {
                   </div>
                 </div>
               </div>
-              <div className="mr-10 flex flex-col gap-3">
+              <div className="mr-28 flex flex-col gap-3">
                 {getRecommendedVideos.length &&
                   videos.map((item) => {
                     return <WatchCard data={item} key={item.videoId} />;

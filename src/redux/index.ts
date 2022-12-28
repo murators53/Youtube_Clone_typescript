@@ -8,6 +8,7 @@ import { getVideoDetails } from "./reducers/getVideoDetails"
 
 const initialState: InitialState = {
     videos:[],
+    videos2:[],
     currentPlaying: null,
     searchTerm:"",
     searchResults: [],
