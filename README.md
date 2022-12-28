@@ -1,12 +1,6 @@
-# Tailwind with React  
+# TypeScript with Tailwind ,Redux Toolkit
 
-## What I Practice
 
- - `<Sidebar />` component
- -`tailwind` için `line-clamp`
- - For audio folders `react-use` 
- - For player range slider  `react-range` 
- - Lots of tailwind :)
 
 ### `Screen` </br>
 
